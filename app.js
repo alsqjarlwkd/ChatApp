@@ -11,8 +11,8 @@ app.use(express.static(path.join(__dirname,"src"))) //해당 앱의 실행 경�
 const PORT = process.env.PORT || 5000;
 
 io.on("connection",(socket)=>{
-    consonle.log("연결이 이루어졌습니다");
+    socket.on("chatting",(data)=>{
+        io.emit("chatting",data)
+    })
 })
-
-console.log("연결됌");
 server.listen(PORT,()=>console.log(`server is running${PORT}`))//요청을 받으면 콘솔로크 포트번호 출력
