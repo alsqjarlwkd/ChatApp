@@ -12,6 +12,7 @@ chatinput.addEventListener("keypress",(event)=>{
     if(event.keyCode===13)
     {
         send()
+        chatinput.value=""
     }
 })
 
@@ -21,6 +22,7 @@ function send(){
         msg:chatinput.value,
     }
     socket.emit("chatting",param);//socket.emit(서버로 보낼 이벤트명,데이터); 클라이언트에서 서버로 요청을 보낼때 .emit 메소드를 사용
+    chatinput.value=""
 }
 
 sendButton.addEventListener("click",send)
